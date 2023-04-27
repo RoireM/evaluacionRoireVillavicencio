@@ -1,7 +1,6 @@
 package uca.edu.ni.miprojectfinish
 
 import android.content.Context
-import android.os.Parcel
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -11,10 +10,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-@Database(entities = [Word::class], version = 1)
+@Database(entities = [word::class], version = 1)
 abstract class WordRoomDatabase : RoomDatabase() {
 
-    abstract fun wordDao(): WordDao
+    abstract fun wordDao(): Dao
 
     companion object {
         @Volatile
@@ -62,19 +61,18 @@ abstract class WordRoomDatabase : RoomDatabase() {
         }
 
 
-        suspend fun populateDatabase(wordDao: WordDao) {
+        suspend fun populateDatabase(wordDao: Dao) {
             // Start the app with a clean database every time.
             // Not needed if you only populate on creation.
             wordDao.deleteAll()
 
-            var word = Word("Hello")
+            var word = word("Hello")
             wordDao.insert(word)
-            word = Word("World!")
+            word = word("World!")
             wordDao.insert(word)
         }
     }
 }
 
-class Word(s: Parcel) {
 
-}
+
