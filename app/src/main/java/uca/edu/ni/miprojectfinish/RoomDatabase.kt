@@ -1,6 +1,7 @@
 package uca.edu.ni.miprojectfinish
 
 import android.content.Context
+import android.os.Parcel
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -74,6 +75,6 @@ abstract class WordRoomDatabase : RoomDatabase() {
     }
 }
 
-class Word(s: String) {
+class Word(s: Parcel) {
 
 }
